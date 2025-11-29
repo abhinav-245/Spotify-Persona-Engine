@@ -170,8 +170,7 @@ This project is licensed under the **MIT License**.
 
 **Abhinav Reddy**
 
-- GitHub: [@AbhinavReddy](https://github.com/AbhinavReddy)
-- LinkedIn: [Abhinav Reddy](https://linkedin.com/in/AbhinavReddy)
+- LinkedIn: [Abhinav Reddy](https://linkedin.com/in/abhinavreddyadla)
 
 ---
 
