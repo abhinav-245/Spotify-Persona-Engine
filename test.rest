@@ -1,0 +1,12 @@
+POST http://127.0.0.1:3000/api/analyze
+Authorization: Bearer BQDUJ8dKmtdU5qvOQv7nPOazGV-j7ou7J5TE3o-GyxP2pROHmhvG5JuaKn1YnCZZzqsRNJ3lIxNHxWXLDuQQJbrmG-iftTr0XSeKTGiTgpekkOjUuDZr4-BlDUlxnYdmay6b6R5de0vi9cE92XGbtEypnOKkCrs7AWlbinOoUF5v0_35zMjhYcsGpKTduVl2drRRcDdeYgJfH5ZE66HK78GUIjxCJaKHM0JuhlWQr34s
+Content-Type: application/json
+
+{}
+
+###
+POST http://127.0.0.1:3000/api/roast
+Authorization: Bearer BQDUJ8dKmtdU5qvOQv7nPOazGV-j7ou7J5TE3o-GyxP2pROHmhvG5JuaKn1YnCZZzqsRNJ3lIxNHxWXLDuQQJbrmG-iftTr0XSeKTGiTgpekkOjUuDZr4-BlDUlxnYdmay6b6R5de0vi9cE92XGbtEypnOKkCrs7AWlbinOoUF5v0_35zMjhYcsGpKTduVl2drRRcDdeYgJfH5ZE66HK78GUIjxCJaKHM0JuhlWQr34s
+Content-Type: application/json
+
+{}
