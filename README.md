@@ -147,7 +147,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 **Abhinav Reddy**
 
-- LinkedIn: [Abhinav Reddy](https://linkedin.com/in/adlaabhinavreddy)
+- LinkedIn: [Abhinav Reddy](https://linkedin.com/in/abhinavreddyadla)
 
 ---
 
