@@ -6,19 +6,21 @@ function App() {
   const [playlistData, setPlaylistData] = useState(null);
   const [accessToken, setAccessToken] = useState(null);
 
-
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    const accessToken = params.get('access_token');
+    const tokenFromUrl = params.get('access_token');
 
-    if (accessToken) {
+    if (tokenFromUrl) {
+      // Clear the token from the URL for security and aesthetics
       window.history.replaceState({}, document.title, "/");
-      setAccessToken(accessToken);
 
-      // Fetch playlists
+      // Store token in state
+      setAccessToken(tokenFromUrl);
+
+      // Fetch playlists using the token
       fetch('/api/playlists', {
         headers: {
-          'Authorization': `Bearer ${accessToken}`
+          'Authorization': `Bearer ${tokenFromUrl}`
         }
       })
         .then(res => res.json())
@@ -32,22 +34,17 @@ function App() {
   }, []);
 
   const handleLogin = () => {
-    // Redirect to the backend login route
     window.location.href = 'http://127.0.0.1:3000/login';
   };
 
-  const handleRoast = () => {
-    // Placeholder for future logic
-    console.log('Roast button clicked');
-  };
-
-  if (playlistData) {
+  // Only render gallery if we have both data and a token
+  if (playlistData && accessToken) {
     return <PlaylistGallery playlists={playlistData.playlists} accessToken={accessToken} />;
   }
 
   return (
     <div className="container">
-      <h1 className="title">Spotify Playlist Analyzer</h1>
+      <h1 className="title">Spotify Persona Engine</h1>
       {!playlistData && (
         <div className="button-group">
           <button onClick={handleLogin} className="btn login-btn">
