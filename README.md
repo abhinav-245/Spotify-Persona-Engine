@@ -1,11 +1,5 @@
 # 🎧 Spotify Persona Engine
 
-![License](https://img.shields.io/badge/License-MIT-blue.svg)
-![Node](https://img.shields.io/badge/Backend-Node.js-339933.svg?logo=node.js)
-![React](https://img.shields.io/badge/Frontend-React-61DAFB.svg?logo=react)
-![Spotify](https://img.shields.io/badge/API-Spotify-1DB954.svg?logo=spotify)
-![Groq](https://img.shields.io/badge/AI-Groq-f55036.svg)
-
 ## 🚀 Overview
 
 **Spotify Persona Engine** is a sophisticated full-stack application designed to decode the psychology behind your music taste. By seamlessly connecting with your Spotify account, it dives deep into your listening habits, extracting patterns that define who you are—or who you pretend to be.
@@ -140,17 +134,7 @@ The engine follows a strict pipeline to ensure accurate and efficient analysis:
 
 ## 📸 Screenshots
 
-| Playlist Gallery | AI Analysis Modal |
-|:---:|:---:|
-| ![Gallery Placeholder](https://via.placeholder.com/600x400?text=Playlist+Gallery+UI) | ![Modal Placeholder](https://via.placeholder.com/600x400?text=AI+Analysis+Result) |
-
-## 🗺️ Roadmap
-
-- [ ] **Social Sharing**: Generate shareable images of your persona card.
-- [ ] **Friend Comparison**: "Roast Battle" mode to compare tastes with a friend.
-- [ ] **Genre Visualization**: Interactive charts showing your top genres.
-- [ ] **History Deep Dive**: Analyze your "Recently Played" for immediate mood detection.
-- [ ] **PWA Support**: Install the engine as a native-like app on mobile.
+![Final Result](C:\Users\reddy\OneDrive\Pictures\Screenshots\Screenshot 2025-11-30 165223.png)
 
 ## 🤝 Contributing
 
@@ -161,10 +145,6 @@ Contributions are welcome! To contribute:
 3.  Commit your changes (`git commit -m 'Add NewFeature'`).
 4.  Push to the branch (`git push origin feature/NewFeature`).
 5.  Open a Pull Request.
-
-## 📄 License
-
-This project is licensed under the **MIT License**.
 
 ## 👨‍💻 Author
 

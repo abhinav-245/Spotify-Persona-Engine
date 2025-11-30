@@ -74,7 +74,7 @@ const PlaylistGallery = ({ playlists, accessToken }) => {
                 <h2 className="gallery-title">Your Playlists</h2>
                 <div className="header-actions">
                     <button
-                        className="btn analyze-btn"
+                        className="glass-btn analyze-btn"
                         aria-label="Analyze my listening personality"
                         data-testid="top-analyze-btn"
                         onClick={handleTopAnalysis}
@@ -82,7 +82,7 @@ const PlaylistGallery = ({ playlists, accessToken }) => {
                         Personality Analysis
                     </button>
                     <button
-                        className="btn roast-btn"
+                        className="glass-btn roast-btn"
                         aria-label="Get a fun roast"
                         data-testid="top-roast-btn"
                         onClick={handleTopRoast}
