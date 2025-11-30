@@ -34,7 +34,7 @@ function App() {
   }, []);
 
   const handleLogin = () => {
-    window.location.href = 'http://127.0.0.1:3000/login';
+    window.location.href = 'https://spotify-persona-backend.onrender.com/login';
   };
 
   // Only render gallery if we have both data and a token
