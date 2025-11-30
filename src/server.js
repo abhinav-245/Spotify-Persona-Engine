@@ -94,16 +94,16 @@ ${JSON.stringify(summaryJson, null, 2)}
 
 const app = express();
 
-// Enable CORS for frontend
+// Enable CORS for frontend - Allow all origins temporarily for debugging
 app.use(cors({
-    origin: [
-        'http://127.0.0.1:5173',
-        'http://localhost:5173',
-        'https://spotify-persona-engine.onrender.com',
-        process.env.FRONTEND_URL
-    ].filter(Boolean),
-    credentials: true
+    origin: true, // Reflects the request origin, effectively allowing all
+    credentials: true,
+    methods: ['GET', 'POST', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
 }));
+
+// Handle preflight requests explicitly
+app.options('*', cors());
 
 app.use(express.json());
 
