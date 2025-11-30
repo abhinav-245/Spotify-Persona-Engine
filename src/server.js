@@ -133,7 +133,7 @@ app.get('/callback', async (req, res) => {
         // In development, redirect to the Vite dev server
         const frontendUrl = process.env.NODE_ENV === 'production'
             ? `/?access_token=${access_token}&refresh_token=${refresh_token}`
-            : `http://127.0.0.1:5173/?access_token=${access_token}&refresh_token=${refresh_token}`;
+            : `${process.env.FRONTEND_URL}?access_token=${access_token}&refresh_token=${refresh_token}`;
 
         res.redirect(frontendUrl);
 
