@@ -134,7 +134,7 @@ The engine follows a strict pipeline to ensure accurate and efficient analysis:
 
 ## 📸 Screenshots
 
-![Final Result](C:\Users\reddy\OneDrive\Pictures\Screenshots\Screenshot 2025-11-30 165223.png)
+<img width="1825" height="859" alt="Screenshot 2025-11-30 165223" src="https://github.com/user-attachments/assets/816dc3cb-1f95-43ee-8c55-9945a6196324" />
 
 ## 🤝 Contributing
 
