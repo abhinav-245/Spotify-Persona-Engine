@@ -96,7 +96,7 @@ app.use(express.json());
 
 const CLIENT_ID = process.env.SPOTIFY_CLIENT_ID;
 const CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET;
-const REDIRECT_URI = 'https://spotify-persona-backend.onrender.com/callback';
+const REDIRECT_URI = process.env.REDIRECT_URI || 'https://spotify-persona-backend.onrender.com/callback';
 
 // 1) Redirect user to Spotify to authorize
 app.get('/login', (req, res) => {
@@ -131,15 +131,17 @@ app.get('/callback', async (req, res) => {
         // Redirect to frontend with tokens only
         // In production, redirect to the root path (served by express static)
         // In development, redirect to the Vite dev server
-        const frontendUrl = process.env.NODE_ENV === 'production'
-            ? `/?access_token=${access_token}&refresh_token=${refresh_token}`
-            : `${process.env.FRONTEND_URL}?access_token=${access_token}&refresh_token=${refresh_token}`;
+        const frontendBase = process.env.NODE_ENV === 'production'
+            ? (process.env.FRONTEND_URL || '/')
+            : 'http://127.0.0.1:5173';
+
+        const frontendUrl = `${frontendBase}?access_token=${access_token}&refresh_token=${refresh_token}`;
 
         res.redirect(frontendUrl);
 
     } catch (err) {
         console.error(err.response ? err.response.data : err.message);
-        res.status(500).send('Auth exchange failed');
+        res.status(500).send('Auth exchange failed: ' + (err.response ? JSON.stringify(err.response.data) : err.message));
     }
 });
 
@@ -159,7 +161,8 @@ app.get('/api/playlists', async (req, res) => {
         res.json({ playlists: playlistsResp.data.items });
     } catch (err) {
         console.error('Playlist fetch error:', err.response ? err.response.data : err.message);
-        res.status(500).json({ error: 'Failed to fetch playlists' });
+        const errorMessage = err.response?.data?.error?.message || err.message || 'Unknown error';
+        res.status(500).json({ error: 'Failed to fetch playlists', details: errorMessage });
     }
 });
 
