@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import AIResultModal from './AIResultModal';
 import './index.css';
 
-const PlaylistGallery = ({ playlists, accessToken }) => {
+const PlaylistGallery = ({ playlists, accessToken, onLogout }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalTitle, setModalTitle] = useState('');
     const [aiResult, setAiResult] = useState('');
@@ -66,10 +66,15 @@ const PlaylistGallery = ({ playlists, accessToken }) => {
         }
     };
 
-
-
     return (
-        <div className="gallery-container">
+        <div className="gallery-container" style={{ position: 'relative' }}>
+            <button
+                className="logout-btn"
+                onClick={onLogout}
+                aria-label="Logout"
+            >
+                Logout
+            </button>
             <div className="gallery-header">
                 <h2 className="gallery-title">Your Playlists</h2>
                 <div className="header-actions">

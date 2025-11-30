@@ -37,9 +37,16 @@ function App() {
     window.location.href = 'https://spotify-persona-backend.onrender.com/login';
   };
 
+  const handleLogout = () => {
+    setAccessToken(null);
+    setPlaylistData(null);
+    // Optional: Clear URL parameters if they persist
+    window.history.replaceState({}, document.title, "/");
+  };
+
   // Only render gallery if we have both data and a token
   if (playlistData && accessToken) {
-    return <PlaylistGallery playlists={playlistData.playlists} accessToken={accessToken} />;
+    return <PlaylistGallery playlists={playlistData.playlists} accessToken={accessToken} onLogout={handleLogout} />;
   }
 
   return (

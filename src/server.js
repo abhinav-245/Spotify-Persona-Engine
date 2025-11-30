@@ -171,8 +171,11 @@ app.get('/api/playlists', async (req, res) => {
         res.json({ playlists: playlistsResp.data.items });
     } catch (err) {
         console.error('Playlist fetch error:', err.response ? err.response.data : err.message);
-        const errorMessage = err.response?.data?.error?.message || err.message || 'Unknown error';
-        res.status(500).json({ error: 'Failed to fetch playlists', details: errorMessage });
+        const status = err.response ? err.response.status : 500;
+        const spotifyError = err.response?.data?.error;
+        const errorMessage = (typeof spotifyError === 'string' ? spotifyError : spotifyError?.message) || err.message || 'Unknown error';
+
+        res.status(status).json({ error: 'Failed to fetch playlists', details: errorMessage });
     }
 });
 
