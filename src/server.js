@@ -244,8 +244,8 @@ if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, '../dist')));
 
     // Handle SPA routing: serve index.html for any unknown routes
-    app.get('*', (req, res) => {
-        res.sendFile(path.join(__dirname, '../dist', 'index.html'));
+    app.use((req, res) => {
+        res.sendFile(path.join(__dirname, '../dist/index.html'));
     });
 }
 
