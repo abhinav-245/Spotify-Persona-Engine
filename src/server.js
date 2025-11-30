@@ -5,6 +5,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
 import Groq from "groq-sdk";
+import cors from 'cors';
 import { processPlaylistsForAI } from './spotifyHelpers.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -92,6 +93,18 @@ ${JSON.stringify(summaryJson, null, 2)}
 }
 
 const app = express();
+
+// Enable CORS for frontend
+app.use(cors({
+    origin: [
+        'http://127.0.0.1:5173',
+        'http://localhost:5173',
+        'https://spotify-persona-engine.onrender.com',
+        process.env.FRONTEND_URL
+    ].filter(Boolean),
+    credentials: true
+}));
+
 app.use(express.json());
 
 const CLIENT_ID = process.env.SPOTIFY_CLIENT_ID;
