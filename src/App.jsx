@@ -18,7 +18,7 @@ function App() {
       setAccessToken(tokenFromUrl);
 
       // Fetch playlists using the token
-      fetch('/api/playlists', {
+      fetch('https://spotify-persona-backend.onrender.com/api/playlists', {
         headers: {
           'Authorization': `Bearer ${tokenFromUrl}`
         }

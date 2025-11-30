@@ -96,7 +96,7 @@ app.use(express.json());
 
 const CLIENT_ID = process.env.SPOTIFY_CLIENT_ID;
 const CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET;
-const REDIRECT_URI = 'http://127.0.0.1:3000/callback';
+const REDIRECT_URI = process.env.REDIRECT_URI || 'http://127.0.0.1:3000/callback';
 
 // 1) Redirect user to Spotify to authorize
 app.get('/login', (req, res) => {
@@ -129,9 +129,13 @@ app.get('/callback', async (req, res) => {
         const { access_token, refresh_token } = tokenResp.data;
 
         // Redirect to frontend with tokens only
-        // In development, redirect to the Vite dev server on port 5173
-        // In production, this might need to be different, but for now we assume dev flow
-        res.redirect(`http://127.0.0.1:5173/?access_token=${access_token}&refresh_token=${refresh_token}`);
+        // In production, redirect to the root path (served by express static)
+        // In development, redirect to the Vite dev server
+        const frontendUrl = process.env.NODE_ENV === 'production'
+            ? `/?access_token=${access_token}&refresh_token=${refresh_token}`
+            : `http://127.0.0.1:5173/?access_token=${access_token}&refresh_token=${refresh_token}`;
+
+        res.redirect(frontendUrl);
 
     } catch (err) {
         console.error(err.response ? err.response.data : err.message);
@@ -238,6 +242,12 @@ app.post('/api/roast', async (req, res) => {
 // Serve static files from the React build (dist) ONLY in production
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, '../dist')));
+
+    // Handle SPA routing: serve index.html for any unknown routes
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname, '../dist', 'index.html'));
+    });
 }
 
-app.listen(3000, '0.0.0.0', () => console.log('App running on http://127.0.0.1:3000'));
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, '0.0.0.0', () => console.log(`App running on http://127.0.0.1:${PORT}`));

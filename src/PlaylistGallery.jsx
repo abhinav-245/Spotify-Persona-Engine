@@ -15,7 +15,7 @@ const PlaylistGallery = ({ playlists, accessToken }) => {
         setAiResult('');
 
         try {
-            const response = await fetch('/api/analyze', {
+            const response = await fetch('https://spotify-persona-backend.onrender.com/api/analyze', {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${accessToken}`,
@@ -44,7 +44,7 @@ const PlaylistGallery = ({ playlists, accessToken }) => {
         setAiResult('');
 
         try {
-            const response = await fetch('/api/roast', {
+            const response = await fetch('https://spotify-persona-backend.onrender.com/api/roast', {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${accessToken}`,
