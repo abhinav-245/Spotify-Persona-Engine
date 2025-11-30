@@ -116,7 +116,8 @@ app.get('/login', (req, res) => {
             response_type: 'code',
             client_id: CLIENT_ID,
             scope: scope,
-            redirect_uri: REDIRECT_URI
+            redirect_uri: REDIRECT_URI,
+            show_dialog: true // Force consent screen to allow switching accounts
         });
     res.redirect(authUrl);
 });
